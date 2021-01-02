@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            background: rgb(194, 194, 194);
+            overflow: scroll;
+            display: inline-block;
+            table-layout: fixed;
+        }
+
+        td {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            transition: color 0.4s linear;
+            transition: background 0.4s linear;
+        }
+
+        div, p {
+          text-align: center;
+        }
+
+        p {
+          font-size: 24px;
+          font-family: Roboto, serif;
+          font-weight: 500;
+        }
+
+
+        td[data-green] {
+          background: rgb(17, 175, 83);
+          color: #ffffff;
+        }
+
+        tr:nth-child(even) td:nth-child(odd)[data-green], tr:nth-child(odd) td:nth-child(even)[data-green] {
+            background: #0e8d15;
+            color: #ffffff;
+        }
+
+        td[data-danger] {
+          background: rgb(150, 22, 22);
+          color: #ffffff;
+        }
+
+        tr:nth-child(even) td:nth-child(odd)[data-danger], tr:nth-child(odd) td:nth-child(even)[data-danger] {
+            background: rgb(99, 16, 16);
+            color: #ffffff;
+        }
+
+
+        tr:nth-child(even) td:nth-child(odd), tr:nth-child(odd) td:nth-child(even) {
+            background: rgb(95, 95, 95);
+        }
+
+        td.active {
+            background: #70158c;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) td:nth-child(odd).active, tr:nth-child(odd) td:nth-child(even).active {
+            background: #59106f;
+            color: #ffffff;
+        }
+
+        td.castle-kingside {
+            background: #70158c;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) td:nth-child(odd).castle-kingside, tr:nth-child(odd) td:nth-child(even).castle-kingside {
+            background: #59106f;
+            color: #ffffff;
+        }
+
+        td.castle-queenside {
+            background: #70158c;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) td:nth-child(odd).castle-queenside, tr:nth-child(odd) td:nth-child(even).castle-queenside {
+            background: #59106f;
+            color: #ffffff;
+        }
+
+        td.passant {
+            background: #70158c !important;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) td:nth-child(odd).passant, tr:nth-child(odd) td:nth-child(even).passant {
+            background: #59106f !important;
+            color: #ffffff;
+        }
+
+        td.attack {
+            background: #e2312b;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) td:nth-child(odd).attack, tr:nth-child(odd) td:nth-child(even).attack {
+            background: #b61515;
+            color: #ffffff;
+        }
+
+        td.move {
+            background: #2356ca;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) td:nth-child(odd).move, tr:nth-child(odd) td:nth-child(even).move {
+            background: #12278e;
+            color: #ffffff;
+        }
+
+        td[data-death]{
+            background: #292b2e;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) td:nth-child(odd)[data-death], tr:nth-child(odd) td:nth-child(even)[data-death] {
+            background: #292b2e;
+            color: #ffffff;
+        }
+
+        img {
+          width: 50px;
+          height: 50px;
+        }
+    </style>
+</head>
+<body>
+   <div>
+    <table>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+    <table class="stormSquares">
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+</div>
+    <p class="warning">Storm squares appearing in <span class="movesNumber">N</span> moves.</p>
+<script type="text/javascript" src="js/bundle.js"></script></body>
+</html>
